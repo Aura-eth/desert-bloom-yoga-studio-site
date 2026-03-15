@@ -1,298 +1,225 @@
-"use client";
+"use client"
 
-import { FadeInUp } from '@/components/fade-in-up';
+import { FadeInUp } from '@/components/fade-in-up'
+import { ShineBorder } from '@/components/shine-border'
+import { cn } from '@/lib/utils'
 
-export default function Classes() {
+const classOfferings = [
+  {
+    name: "Vinyasa Flow",
+    price: "$28 drop-in",
+    description: "Dynamic sequences linking breath with movement, building strength and flexibility"
+  },
+  {
+    name: "Hatha Yoga",
+    price: "$25 drop-in",
+    description: "Slower-paced practice focusing on alignment and holding poses for deeper awareness"
+  },
+  {
+    name: "Yin Yoga",
+    price: "$25 drop-in",
+    description: "Meditative practice with long-held poses to release deep tension and restore balance"
+  },
+  {
+    name: "Hot Yoga Sessions",
+    price: "$32 drop-in",
+    description: "Heated room classes for enhanced detoxification and increased flexibility"
+  }
+]
+
+const galleryImages = [
+  {
+    url: "https://source.unsplash.com/600x400/?desert-yoga-studio-interior-warm-lighting-cacti",
+    alt: "Desert yoga studio interior with warm lighting"
+  },
+  {
+    url: "https://source.unsplash.com/600x500/?yoga-class-sunset-golden-hour-desert-mountains",
+    alt: "Yoga class at sunset with desert mountains"
+  },
+  {
+    url: "https://source.unsplash.com/600x450/?meditation-sound-bowl-singing-bowl-desert-setting",
+    alt: "Meditation sound bowl in desert setting"
+  },
+  {
+    url: "https://source.unsplash.com/600x480/?hot-yoga-room-warm-lighting-bamboo-floor",
+    alt: "Hot yoga room with warm lighting and bamboo floor"
+  },
+  {
+    url: "https://source.unsplash.com/600x520/?yoga-teacher-training-group-desert-retreat",
+    alt: "Yoga teacher training group at desert retreat"
+  },
+  {
+    url: "https://source.unsplash.com/600x380/?wellness-boutique-natural-products-desert-aesthetic",
+    alt: "Wellness boutique with natural products and desert aesthetic"
+  }
+]
+
+export default function ClassesPage() {
   return (
     <>
       <style jsx>{`
         .sand-texture {
-          background-image: 
-            radial-gradient(circle at 20% 80%, rgba(210, 180, 140, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(222, 184, 135, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(160, 82, 45, 0.05) 0%, transparent 50%);
-          mix-blend-mode: multiply;
+          position: relative;
         }
-        .desert-divider {
-          background: linear-gradient(135deg, transparent 0%, var(--color-surface) 20%, var(--color-surface) 80%, transparent 100%);
-          clip-path: ellipse(100% 60% at 50% 40%);
+        .sand-texture::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: radial-gradient(circle at 25% 25%, rgba(210, 180, 140, 0.1) 1px, transparent 1px),
+                          radial-gradient(circle at 75% 75%, rgba(160, 130, 98, 0.08) 1px, transparent 1px);
+          background-size: 24px 24px, 36px 36px;
+          animation: sand-shift 20s ease-in-out infinite;
+          pointer-events: none;
         }
-        .flowing-border {
-          border-radius: 3rem 1rem 3rem 1rem;
+        @keyframes sand-shift {
+          0%, 100% { transform: translateX(0) translateY(0); }
+          25% { transform: translateX(2px) translateY(-1px); }
+          50% { transform: translateX(-1px) translateY(2px); }
+          75% { transform: translateX(1px) translateY(1px); }
         }
-        .meditation-glow {
-          background: radial-gradient(ellipse at center, rgba(139, 69, 19, 0.1) 0%, transparent 70%);
+        .organic-radius {
+          border-radius: 24% 76% 32% 68% / 42% 28% 72% 58%;
+        }
+        .organic-radius-alt {
+          border-radius: 68% 32% 76% 24% / 58% 72% 28% 42%;
         }
       `}</style>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden sand-texture">
         <img 
-          src="https://source.unsplash.com/1920x1200/?desert yoga studio warm lighting meditation space" 
+          src="https://source.unsplash.com/1920x1080/?desert-yoga-studio-interior-warm-lighting-cacti" 
           alt="" 
           className="absolute inset-0 w-full h-full object-cover" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-        <div className="sand-texture absolute inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-900/70 via-orange-800/60 to-amber-900/80" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <FadeInUp delay={0}>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight" style={{fontFamily: 'var(--font-heading)'}}>
-              Classes for Every Body
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight font-[var(--font-heading)]">
+              Classes for Every Body, Every Journey
             </h1>
           </FadeInUp>
           <FadeInUp delay={100}>
-            <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-              From gentle beginnings to advanced practice, find your perfect flow
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              Discover the perfect practice to align with your wellness goals
             </p>
           </FadeInUp>
         </div>
       </section>
 
-      {/* Services & Pricing Section */}
-      <section id="services-pricing" className="py-24 px-6 relative">
-        <div className="meditation-glow absolute inset-0" />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <FadeInUp delay={0}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{fontFamily: 'var(--font-heading)', color: 'var(--color-primary)'}}>
-                Our Class Offerings
-              </h2>
-            </FadeInUp>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <FadeInUp delay={0}>
-              <div className="bg-white p-10 flowing-border shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
-                <h3 className="text-2xl font-bold mb-4 text-amber-900">Vinyasa Flow</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Dynamic flowing sequences that build strength and flexibility while connecting breath to movement
-                </p>
-                <div className="flex justify-between items-center text-sm font-medium text-amber-800">
-                  <span>60 minutes</span>
-                  <span>All levels welcome</span>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={100}>
-              <div className="bg-white p-10 flowing-border shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
-                <h3 className="text-2xl font-bold mb-4 text-amber-900">Hatha Yoga</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Slower-paced practice focusing on proper alignment and holding poses with intention
-                </p>
-                <div className="flex justify-between items-center text-sm font-medium text-amber-800">
-                  <span>75 minutes</span>
-                  <span>Perfect for beginners</span>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={200}>
-              <div className="bg-white p-10 flowing-border shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
-                <h3 className="text-2xl font-bold mb-4 text-amber-900">Yin Yoga</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Restorative practice with poses held for 3-5 minutes to release deep tension
-                </p>
-                <div className="flex justify-between items-center text-sm font-medium text-amber-800">
-                  <span>90 minutes</span>
-                  <span>All levels</span>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={300}>
-              <div className="bg-white p-10 flowing-border shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
-                <h3 className="text-2xl font-bold mb-4 text-amber-900">Hot Yoga</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Classes in our heated room to deepen flexibility and enhance detoxification
-                </p>
-                <div className="flex justify-between items-center text-sm font-medium text-amber-800">
-                  <span>60 minutes</span>
-                  <span>Intermediate recommended</span>
-                </div>
-              </div>
-            </FadeInUp>
-          </div>
-        </div>
-      </section>
-
-      {/* Desert Divider */}
-      <div className="desert-divider h-32 relative"></div>
-
-      {/* Process Steps Section */}
-      <section id="process-steps" className="py-24 px-6 bg-gradient-to-b from-amber-50 to-white relative">
-        <div className="sand-texture absolute inset-0" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <FadeInUp delay={0}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{fontFamily: 'var(--font-heading)', color: 'var(--color-primary)'}}>
-                Your First Class Experience
-              </h2>
-            </FadeInUp>
-          </div>
-          
-          <div className="space-y-16">
-            <FadeInUp delay={0}>
-              <div className="flex gap-8 items-start">
-                <div className="flex flex-col items-center flex-none">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 text-white flex items-center justify-center font-bold text-2xl shadow-lg">
-                    1
-                  </div>
-                  <div className="w-px h-16 bg-gradient-to-b from-amber-200 to-transparent mt-6" />
-                </div>
-                <div className="pt-4">
-                  <h3 className="text-2xl font-bold mb-4 text-amber-900">Arrive Early</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    Come 15 minutes before class to get settled and meet your instructor
-                  </p>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={100}>
-              <div className="flex gap-8 items-start">
-                <div className="flex flex-col items-center flex-none">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 text-white flex items-center justify-center font-bold text-2xl shadow-lg">
-                    2
-                  </div>
-                  <div className="w-px h-16 bg-gradient-to-b from-amber-200 to-transparent mt-6" />
-                </div>
-                <div className="pt-4">
-                  <h3 className="text-2xl font-bold mb-4 text-amber-900">Bring Water & Towel</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    We provide mats and blocks, but personal water and towel enhance comfort
-                  </p>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={200}>
-              <div className="flex gap-8 items-start">
-                <div className="flex flex-col items-center flex-none">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 text-white flex items-center justify-center font-bold text-2xl shadow-lg">
-                    3
-                  </div>
-                  <div className="w-px h-16 bg-gradient-to-b from-amber-200 to-transparent mt-6" />
-                </div>
-                <div className="pt-4">
-                  <h3 className="text-2xl font-bold mb-4 text-amber-900">Listen to Your Body</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    Every pose has modifications - honor where you are today
-                  </p>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={300}>
-              <div className="flex gap-8 items-start">
-                <div className="flex flex-col items-center flex-none">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 text-white flex items-center justify-center font-bold text-2xl shadow-lg">
-                    4
-                  </div>
-                </div>
-                <div className="pt-4">
-                  <h3 className="text-2xl font-bold mb-4 text-amber-900">Embrace the Journey</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    Yoga is a practice, not a performance. Focus on your breath and inner experience
-                  </p>
-                </div>
-              </div>
-            </FadeInUp>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Section */}
-      <section id="social-proof" className="py-24 px-6 relative">
-        <div className="absolute inset-0">
-          <img 
-            src="https://source.unsplash.com/1920x800/?yoga class vinyasa flow students peaceful studio" 
-            alt="" 
-            className="w-full h-full object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 to-white/85" />
-        </div>
-        <div className="sand-texture absolute inset-0" />
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <FadeInUp delay={0}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{fontFamily: 'var(--font-heading)', color: 'var(--color-primary)'}}>
-                Student Experiences
-              </h2>
-            </FadeInUp>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <FadeInUp delay={0}>
-              <div className="bg-white/90 backdrop-blur-sm p-10 flowing-border shadow-xl">
-                <div className="text-6xl text-amber-600 mb-6 font-serif">&ldquo;</div>
-                <p className="text-gray-700 text-lg leading-relaxed mb-8 italic">
-                  The Yin classes have completely transformed how I handle stress. This studio feels like a true sanctuary.
-                </p>
-                <div className="text-right">
-                  <cite className="text-amber-900 font-semibold not-italic">Sarah M.</cite>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={100}>
-              <div className="bg-white/90 backdrop-blur-sm p-10 flowing-border shadow-xl">
-                <div className="text-6xl text-amber-600 mb-6 font-serif">&ldquo;</div>
-                <p className="text-gray-700 text-lg leading-relaxed mb-8 italic">
-                  As a beginner, the Hatha classes gave me confidence to explore yoga. The instructors are incredibly supportive.
-                </p>
-                <div className="text-right">
-                  <cite className="text-amber-900 font-semibold not-italic">Michael R.</cite>
-                </div>
-              </div>
-            </FadeInUp>
-            
-            <FadeInUp delay={200}>
-              <div className="bg-white/90 backdrop-blur-sm p-10 flowing-border shadow-xl">
-                <div className="text-6xl text-amber-600 mb-6 font-serif">&ldquo;</div>
-                <p className="text-gray-700 text-lg leading-relaxed mb-8 italic">
-                  The hot yoga room is perfectly heated. I leave every class feeling renewed and stronger.
-                </p>
-                <div className="text-right">
-                  <cite className="text-amber-900 font-semibold not-italic">Jennifer L.</cite>
-                </div>
-              </div>
-            </FadeInUp>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 px-6 bg-gradient-to-br from-amber-900 to-amber-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img 
-            src="https://source.unsplash.com/1920x600/?desert plants succulents warm earth tones" 
-            alt="" 
-            className="w-full h-full object-cover" 
-          />
-        </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+      {/* Services & Pricing */}
+      <section id="services-pricing" className="py-32 px-6">
+        <div className="max-w-4xl mx-auto">
           <FadeInUp delay={0}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Begin Your Journey?
+            <h2 className="text-5xl font-bold text-center mb-20 text-[var(--color-text)] font-[var(--font-heading)]">
+              Our Class Offerings
             </h2>
           </FadeInUp>
+          
+          <div className="space-y-8">
+            {classOfferings.map((classItem, i) => (
+              <FadeInUp key={classItem.name} delay={100 + i * 100}>
+                <ShineBorder 
+                  borderRadius={20} 
+                  borderWidth={2} 
+                  duration={3} 
+                  color={["#d97706", "#f59e0b", "#d97706"]}
+                  className="organic-radius"
+                >
+                  <div className="p-8 bg-[var(--color-surface)] rounded-2xl">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold mb-3 text-[var(--color-text)]">{classItem.name}</h3>
+                        <p className="text-lg text-[var(--color-muted)] leading-relaxed">{classItem.description}</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-black text-[var(--color-primary)]">{classItem.price}</div>
+                      </div>
+                    </div>
+                  </div>
+                </ShineBorder>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section id="gallery" className="py-32 px-6 bg-gradient-to-b from-amber-50/30 to-orange-50/30">
+        <div className="max-w-7xl mx-auto">
+          <FadeInUp delay={0}>
+            <h2 className="text-5xl font-bold text-center mb-20 text-[var(--color-text)] font-[var(--font-heading)]">
+              Our Sacred Spaces
+            </h2>
+          </FadeInUp>
+          
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {galleryImages.map((img, i) => (
+              <FadeInUp key={i} delay={100 + (i % 3) * 100}>
+                <div className="break-inside-avoid overflow-hidden organic-radius-alt group">
+                  <img 
+                    src={img.url} 
+                    alt={img.alt} 
+                    className="w-full hover:scale-105 transition duration-700 ease-out" 
+                  />
+                </div>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Booking CTA */}
+      <section id="booking-cta" className="relative py-32 px-6 overflow-hidden sand-texture">
+        <img 
+          src="https://source.unsplash.com/1920x800/?yoga-teacher-training-group-desert-retreat" 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/90 via-orange-800/80 to-amber-900/90" />
+        
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <FadeInUp delay={0}>
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-white font-[var(--font-heading)]">
+              Ready to Flow?
+            </h2>
+          </FadeInUp>
+          
           <FadeInUp delay={100}>
-            <p className="text-xl text-amber-100 mb-10 leading-relaxed">
-              Join us for a class and discover the transformative power of yoga in our desert sanctuary
+            <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Join our community and begin your journey toward balance and inner peace
             </p>
           </FadeInUp>
+          
           <FadeInUp delay={200}>
-            <a 
-              href="/contact" 
-              className="inline-block px-12 py-4 bg-white text-amber-900 font-bold rounded-full text-lg hover:bg-amber-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              Book Your First Class
-            </a>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <ShineBorder 
+                borderRadius={50} 
+                borderWidth={2} 
+                duration={2} 
+                color={["#ffffff", "#f59e0b", "#ffffff"]}
+              >
+                <a 
+                  href="#booking" 
+                  className="inline-block px-12 py-5 bg-white text-amber-900 font-bold rounded-full text-lg hover:bg-white/95 transition duration-300 organic-radius"
+                >
+                  Reserve Your Mat
+                </a>
+              </ShineBorder>
+              
+              <a 
+                href="#schedule" 
+                className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-full text-lg hover:bg-white/10 transition duration-300"
+              >
+                View Weekly Schedule
+              </a>
+            </div>
           </FadeInUp>
         </div>
       </section>
     </>
-  );
+  )
 }

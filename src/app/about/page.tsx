@@ -1,304 +1,208 @@
 "use client";
 
-import FadeInUp from "@/components/fade-in-up";
-import { cn } from "@/lib/utils";
+import { FadeInUp } from '@/components/fade-in-up';
+import { ShineBorder } from '@/components/shine-border';
+import { cn } from '@/lib/utils';
 
 export default function AboutPage() {
   return (
-    <>
-      <style jsx>{`
-        .desert-texture {
-          background-image: 
-            radial-gradient(circle at 20% 50%, rgba(218, 165, 32, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(205, 133, 63, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(160, 82, 45, 0.03) 0%, transparent 50%);
-          mix-blend-mode: multiply;
-        }
-        
-        .sand-pattern {
-          background: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 2px,
-            rgba(218, 165, 32, 0.02) 2px,
-            rgba(218, 165, 32, 0.02) 4px
-          );
-        }
-        
-        .horizon-curve {
-          clip-path: ellipse(100% 100% at 50% 0%);
-        }
-      `}</style>
-      
-      <main className="min-h-screen">
-        {/* Story Section */}
-        <section id="story" className="relative py-24 px-6">
-          <div className="absolute inset-0">
-            <img 
-              src="https://source.unsplash.com/1920x1080/?desert%20yoga%20studio%20warm%20lighting%20meditation%20space" 
-              alt="" 
-              className="w-full h-full object-cover" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-          </div>
-          <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <FadeInUp delay={0}>
-                <span className="text-sm font-semibold text-white/70 uppercase tracking-widest">Our Story</span>
-              </FadeInUp>
-              <FadeInUp delay={100}>
-                <h1 className="text-4xl lg:text-5xl font-bold text-white mt-2 mb-6 leading-tight">Rooted in the Desert</h1>
-              </FadeInUp>
-              <FadeInUp delay={200}>
-                <p className="text-lg text-white/80 leading-relaxed">
-                  Desert Bloom Yoga Studio was born from a vision to create a space where the serene beauty of the Sonoran Desert meets the ancient wisdom of yoga. We believe that just as desert plants bloom with remarkable resilience and grace, each student who enters our doors has the potential to flourish in their own unique way. Our studio serves as a nurturing oasis where community, authentic practice, and personal growth intersect.
-                </p>
-              </FadeInUp>
+    <main className="min-h-screen">
+      {/* Our Story Section */}
+      <section id="story" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <FadeInUp delay={0}>
+            <div className="rounded-[2rem] overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-200/20 to-orange-300/20 z-10" />
+              <img 
+                src="https://source.unsplash.com/600x500/?desert-yoga-studio-interior-warm-lighting-cacti" 
+                alt="Desert Bloom Yoga Studio interior" 
+                className="w-full h-[500px] object-cover" 
+              />
             </div>
-            <div className="order-1 lg:order-2 rounded-2xl overflow-hidden">
-              <FadeInUp delay={300}>
-                <img 
-                  src="https://source.unsplash.com/600x500/?scottsdale%20arizona%20desert%20landscape%20sunrise%20golden%20hour" 
-                  alt="Desert landscape at sunrise" 
-                  className="w-full h-[400px] object-cover" 
-                />
-              </FadeInUp>
-            </div>
-          </div>
-        </section>
-
-        {/* Feature Highlight Section */}
-        <section id="feature-highlight" className="py-24 px-6 bg-gradient-to-b from-white to-amber-50/30 desert-texture">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <FadeInUp delay={0}>
-                <h2 className="text-4xl font-bold mb-4 text-gray-900">More Than Just Yoga</h2>
-              </FadeInUp>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <FadeInUp delay={100}>
-                <div className="text-center group">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500"></div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">Boutique Wellness Corner</h3>
-                  <p className="text-gray-600 leading-relaxed">Curated selection of products from local artisans and wellness brands</p>
-                </div>
-              </FadeInUp>
-              
-              <FadeInUp delay={200}>
-                <div className="text-center group">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500"></div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">Community Partnerships</h3>
-                  <p className="text-gray-600 leading-relaxed">Collaborating with Scottsdale wellness practitioners and local businesses</p>
-                </div>
-              </FadeInUp>
-              
-              <FadeInUp delay={300}>
-                <div className="text-center group">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500"></div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">Sustainable Practices</h3>
-                  <p className="text-gray-600 leading-relaxed">Eco-conscious operations reflecting our connection to the desert environment</p>
-                </div>
-              </FadeInUp>
-            </div>
-          </div>
-        </section>
-
-        {/* Curved Section Divider */}
-        <div className="h-16 bg-gradient-to-r from-amber-100 via-orange-50 to-amber-100 horizon-curve"></div>
-
-        {/* Location Map Section */}
-        <section id="location-map" className="py-24 px-6 bg-white sand-pattern">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2 flex flex-col justify-center">
-              <FadeInUp delay={0}>
-                <h2 className="text-3xl font-bold mb-8 text-gray-900">Visit Our Desert Sanctuary</h2>
-              </FadeInUp>
-              
-              <div className="space-y-6">
-                <FadeInUp delay={100}>
-                  <div>
-                    <span className="font-semibold block mb-2 text-gray-900">Studio Location</span>
-                    <p className="text-gray-600">8745 E Via de Commercio<br />Scottsdale, AZ 85258</p>
-                  </div>
-                </FadeInUp>
-                
-                <FadeInUp delay={200}>
-                  <div>
-                    <span className="font-semibold block mb-2 text-gray-900">Open Daily</span>
-                    <p className="text-gray-600">6:00 AM - 9:00 PM</p>
-                  </div>
-                </FadeInUp>
-                
-                <FadeInUp delay={300}>
-                  <div>
-                    <span className="font-semibold block mb-2 text-gray-900">Parking</span>
-                    <p className="text-gray-600">Free parking available in our private lot</p>
-                  </div>
-                </FadeInUp>
+          </FadeInUp>
+          <FadeInUp delay={100}>
+            <div>
+              <span className="text-sm font-semibold text-amber-700 uppercase tracking-wide block mb-4">About Desert Bloom</span>
+              <h2 className="text-4xl font-bold mb-6 text-gray-900">Our Story</h2>
+              <div className="text-gray-600 text-lg leading-relaxed">
+                <p>Founded in the heart of Scottsdale, Desert Bloom Yoga Studio emerged from a vision to create a sanctuary where ancient yoga wisdom meets the healing energy of the Sonoran Desert. We believe in nurturing authentic practice and genuine community connection.</p>
               </div>
             </div>
-            
-            <div className="lg:col-span-3">
-              <FadeInUp delay={400}>
-                <div className="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-amber-100 to-orange-100 relative">
+          </FadeInUp>
+        </div>
+      </section>
+
+      {/* Team Profiles Section */}
+      <section id="team-profiles" className="py-24 px-6 bg-gradient-to-b from-amber-50/30 to-orange-50/30 relative">
+        <style jsx>{`
+          .sand-texture {
+            background-image: radial-gradient(circle at 25% 25%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 75% 75%, rgba(251, 146, 60, 0.08) 0%, transparent 50%);
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+          }
+        `}</style>
+        <div className="sand-texture" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <FadeInUp delay={0}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900">Meet Our Teachers</h2>
+              <p className="text-gray-600 max-w-xl mx-auto">Experienced guides for your yoga journey</p>
+            </div>
+          </FadeInUp>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <FadeInUp delay={100}>
+              <div className="text-center bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] border border-amber-200/50">
+                <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-4 border-amber-200/50">
                   <img 
-                    src="https://source.unsplash.com/800x600/?yoga%20class%20vinyasa%20flow%20students%20peaceful%20studio" 
-                    alt="Studio location" 
+                    src="https://source.unsplash.com/300x300/?yoga-teacher-woman-peaceful" 
+                    alt="Sarah Mitchell" 
                     className="w-full h-full object-cover" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <p className="text-sm font-medium">Located in the heart of Scottsdale's wellness district</p>
-                  </div>
                 </div>
-              </FadeInUp>
-            </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">Sarah Mitchell</h3>
+                <p className="text-amber-700 font-medium mb-3">Lead Instructor & Founder</p>
+                <p className="text-gray-600 text-sm">500-hour certified instructor specializing in Vinyasa and sound healing</p>
+              </div>
+            </FadeInUp>
+            <FadeInUp delay={200}>
+              <div className="text-center bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] border border-amber-200/50">
+                <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-4 border-amber-200/50">
+                  <img 
+                    src="https://source.unsplash.com/300x300/?yoga-instructor-man-meditation" 
+                    alt="David Chen" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">David Chen</h3>
+                <p className="text-amber-700 font-medium mb-3">Hot Yoga Specialist</p>
+                <p className="text-gray-600 text-sm">Bikram-certified teacher with 8+ years of heated room experience</p>
+              </div>
+            </FadeInUp>
+            <FadeInUp delay={300}>
+              <div className="text-center bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] border border-amber-200/50">
+                <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-4 border-amber-200/50">
+                  <img 
+                    src="https://source.unsplash.com/300x300/?meditation-teacher-woman-serene" 
+                    alt="Luna Rodriguez" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">Luna Rodriguez</h3>
+                <p className="text-amber-700 font-medium mb-3">Yin & Meditation Guide</p>
+                <p className="text-gray-600 text-sm">Trauma-informed yoga teacher focused on restorative practices</p>
+              </div>
+            </FadeInUp>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="py-24 px-6 bg-gradient-to-b from-amber-50/50 to-white desert-texture">
-          <div className="max-w-6xl mx-auto">
+      {/* Feature Highlight Section */}
+      <section id="feature-highlight" className="py-24 px-6 relative">
+        <div className="absolute inset-0">
+          <img 
+            src="https://source.unsplash.com/1600x800/?wellness-boutique-natural-products-desert-aesthetic" 
+            alt="Wellness boutique" 
+            className="w-full h-full object-cover" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/95" />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <FadeInUp delay={0}>
             <div className="text-center mb-16">
-              <FadeInUp delay={0}>
-                <h2 className="text-4xl font-bold mb-4 text-gray-900">Connect With Us</h2>
-              </FadeInUp>
-              <FadeInUp delay={100}>
-                <p className="text-xl text-gray-600">Ready to begin your journey?</p>
-              </FadeInUp>
+              <h2 className="text-4xl font-bold mb-4 text-gray-900">Desert Wellness Boutique</h2>
+              <p className="text-gray-600 max-w-xl mx-auto">Curated local wellness products</p>
             </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Contact Form */}
-              <div>
-                <FadeInUp delay={200}>
-                  <h3 className="text-2xl font-semibold mb-8 text-gray-900">Send us a message</h3>
-                </FadeInUp>
-                
-                <FadeInUp delay={300}>
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors resize-none"
-                      ></textarea>
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white py-4 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
-                    >
-                      Send Message
-                    </button>
-                  </form>
-                </FadeInUp>
-              </div>
-              
-              {/* Contact Info */}
-              <div className="lg:pl-8">
-                <div className="space-y-8">
-                  <FadeInUp delay={400}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center flex-shrink-0">
-                        <div className="w-6 h-6 rounded bg-gradient-to-br from-amber-500 to-orange-500"></div>
-                      </div>
-                      <div>
-                        <span className="font-semibold block mb-1 text-gray-900">Call or text</span>
-                        <p className="text-gray-600">(480) 555-YOGA</p>
-                      </div>
-                    </div>
-                  </FadeInUp>
-                  
-                  <FadeInUp delay={500}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center flex-shrink-0">
-                        <div className="w-6 h-6 rounded bg-gradient-to-br from-amber-500 to-orange-500"></div>
-                      </div>
-                      <div>
-                        <span className="font-semibold block mb-1 text-gray-900">Email us</span>
-                        <p className="text-gray-600">hello@desertbloomyoga.com</p>
-                      </div>
-                    </div>
-                  </FadeInUp>
-                  
-                  <FadeInUp delay={600}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center flex-shrink-0">
-                        <div className="w-6 h-6 rounded bg-gradient-to-br from-amber-500 to-orange-500"></div>
-                      </div>
-                      <div>
-                        <span className="font-semibold block mb-1 text-gray-900">Studio hours</span>
-                        <p className="text-gray-600">6:00 AM - 9:00 PM Daily</p>
-                      </div>
-                    </div>
-                  </FadeInUp>
-                  
-                  <FadeInUp delay={700}>
-                    <div className="pt-8 border-t border-gray-200">
-                      <img 
-                        src="https://source.unsplash.com/400x250/?sound%20bath%20singing%20bowls%20candles%20meditation%20ceremony" 
-                        alt="Sound bath meditation" 
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                      <p className="text-sm text-gray-500 mt-3 text-center">
-                        Join our welcoming desert sanctuary
-                      </p>
-                    </div>
-                  </FadeInUp>
+          </FadeInUp>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
+            <FadeInUp delay={100}>
+              <ShineBorder 
+                borderRadius={24}
+                borderWidth={2}
+                duration={3}
+                color={['#f59e0b', '#ea580c', '#dc2626']}
+                className="bg-white/80 backdrop-blur-sm p-8"
+              >
+                <div className="w-12 h-12 rounded-[1rem] bg-amber-100 flex items-center justify-center mb-6">
+                  <span className="text-amber-700 text-2xl">🌵</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">Local Wellness Brands</h3>
+                <p className="text-gray-600">Handpicked products from Arizona artisans and wellness creators</p>
+              </ShineBorder>
+            </FadeInUp>
+            <FadeInUp delay={200}>
+              <ShineBorder 
+                borderRadius={24}
+                borderWidth={2}
+                duration={3}
+                color={['#10b981', '#059669', '#047857']}
+                className="bg-white/80 backdrop-blur-sm p-8"
+              >
+                <div className="w-12 h-12 rounded-[1rem] bg-emerald-100 flex items-center justify-center mb-6">
+                  <span className="text-emerald-700 text-2xl">🧘</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">Sustainable Yoga Gear</h3>
+                <p className="text-gray-600">Eco-friendly mats, blocks, and props for conscious practitioners</p>
+              </ShineBorder>
+            </FadeInUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <section id="social-proof" className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white relative">
+        <style jsx>{`
+          .organic-shape {
+            border-radius: 2rem 3rem 2.5rem 2rem;
+          }
+          .desert-stone {
+            border-radius: 1.5rem 2rem 1.8rem 1.3rem;
+          }
+        `}</style>
+        <div className="max-w-4xl mx-auto text-center">
+          <FadeInUp delay={0}>
+            <h2 className="text-4xl font-bold mb-16 text-gray-900">Student Stories</h2>
+          </FadeInUp>
+          <FadeInUp delay={100}>
+            <div className="bg-white organic-shape shadow-lg border border-gray-100 p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-100 to-orange-100 desert-stone opacity-30 transform translate-x-8 -translate-y-8" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-emerald-100 to-teal-100 desert-stone opacity-30 transform -translate-x-4 translate-y-4" />
+              <div className="text-6xl text-amber-600 mb-8 relative z-10">&ldquo;</div>
+              <blockquote className="text-2xl md:text-3xl font-light leading-relaxed mb-8 text-gray-800 relative z-10">
+                Desert Bloom transformed not just my flexibility, but my entire relationship with stress and self-care. The teachers create such a welcoming, non-judgmental space.
+              </blockquote>
+              <div className="flex items-center justify-center gap-4 relative z-10">
+                <img 
+                  src="https://source.unsplash.com/80x80/?woman-happy-yoga-student" 
+                  alt="Jessica M." 
+                  className="w-14 h-14 rounded-full object-cover border-2 border-amber-200" 
+                />
+                <div className="text-left">
+                  <div className="font-semibold text-gray-900">Jessica M.</div>
+                  <div className="text-sm text-gray-600">Scottsdale</div>
                 </div>
               </div>
             </div>
+          </FadeInUp>
+        </div>
+      </section>
+
+      {/* Full-width atmospheric section */}
+      <section className="relative h-[60vh] flex items-center justify-center">
+        <img 
+          src="https://source.unsplash.com/1600x800/?meditation-sound-bowl-singing-bowl-desert-setting" 
+          alt="Desert meditation" 
+          className="absolute inset-0 w-full h-full object-cover" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
+        <FadeInUp delay={0}>
+          <div className="relative text-center text-white px-6 max-w-3xl">
+            <h3 className="text-4xl md:text-5xl font-bold mb-4">Find Your Desert Sanctuary</h3>
+            <p className="text-xl text-white/80">Where ancient wisdom meets modern wellness</p>
           </div>
-        </section>
-      </main>
-    </>
+        </FadeInUp>
+      </section>
+    </main>
   );
 }
